@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List contact</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-primary justify-content-center">
+    <a class="navbar-brand" href="#">Projet Contacts</a>
+</nav>
+<form action="#" th:action="@{/formContact}" th:object="${personForm}" method="post">
+    <table>
+        <tr>
+            <td>Nom:</td>
+            <td><input type="text" th:field="*{name}" th:value="${fillName}"/></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Prénom:</td>
+            <td><input type="text" th:field="*{prenom}" /></td>
+            <td th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}">Age Error</td>
+        </tr>
+        <tr>
+            <td>Age:</td>
+            <td><input type="text" th:field="*{age}" /></td>
+            <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</td>
+        </tr>
+        <tr>
+            <td><button type="submit">Sauvegarder</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
