@@ -13,5 +13,5 @@ XML Rest API :
 * `localhost:8080/contacts` : liste de tous les contacts 
 * `localhost:8080/contacts/{contactId}` : liste du contact qui a pour identifiant **contactId**
 
-Technologies utilisées : H2 (BD embarquée, Spring Java Framework) 
+Technologies utilisées : H2 (BD embarquée), Spring Java Framework 
 
