@@ -15,3 +15,7 @@ XML Rest API :
 
 Technologies utilisées : H2 (BD embarquée), Spring Java Framework 
 
+Accès à l'application : 
+-----------------------------
+Utilisateur : `user1`
+Password : `pass`
