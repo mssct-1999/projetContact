@@ -24,22 +24,24 @@ public class ContactController implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/listContact").setViewName("listContact");
         registry.addViewController("/login").setViewName("login");
-        registry.addViewController("/home").setViewName("home");
         registry.addViewController("/").setViewName("home");
 
     }
 
-    @GetMapping("listContact")
-    public String showListContacts(Model model) {
+
+    @GetMapping("/")
+    public String showListContacts1(Model model) {
         Contacts contacts = contactService.findAll();
         List<Contact> contactList = contacts.getContacts();
         model.addAttribute("contacts",contactList);
-        return "listContact";
+        return "home";
     }
 
-    @GetMapping("/formContact")
+
+
+
+        @GetMapping("/formContact")
     public String showForm(@RequestParam(defaultValue = "0") int id, Model model, ContactForm personForm) {
         idContact = id;
         return "form";
@@ -53,13 +55,13 @@ public class ContactController implements WebMvcConfigurer {
         } else {
             contactService.editContact(idContact, personForm.getName(), personForm.getPrenom(), personForm.getAge());
         }
-        return "redirect:/listContact";
+        return "redirect:/";
     }
 
     @GetMapping("/delContact")
     public String delete(@RequestParam("id") int id, Model model) {
         contactService.deleteContact(id);
-        return "redirect:/listContact";
+        return "redirect:/";
     }
 
 }
