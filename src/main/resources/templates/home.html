@@ -4,19 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <title>List contact</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand">Connect&eacute; en tant que : [[${#httpServletRequest.remoteUser}]]</a>
-    <a class="navbar-brand" href="#">Projet Contacts</a>
-    <a class="navbar-brand"><a type="button" th:href="@{/login(logout)}" class="btn btn-danger">Déconnexion</a></a>
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+    <li><a style="padding: 5px !important; padding-top: 2px" th:href="@{/login(logout)}">Déconnexion</a></li>
+</ul>
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" style="margin-left: 5px;" class="brand-logo">Projet Contact</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">[[${#httpServletRequest.remoteUser}]]<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+    </div>
 </nav>
 
-<a style="width:10%;margin-left:37%;margin-top:100px" type="button" th:href="@{/formContact}" class="btn btn-success">Ajouter un contact</a>
+<a style="margin-left:37%;margin-top:100px" type="button" th:href="@{/formContact}" class="btn btn-success">Ajouter un contact</a>
 <div class="table-responsive" style="margin-left: 10%;margin-top:100px">
-<table class="table  table-bordered"  style="border:1px solid black;width: 70%" >
+<table class="table  table-bordered"  style="width: 70%" >
     <thead>
     <tr>
         <th th:align="center" >ID</th>
@@ -44,5 +54,11 @@
     </tbody>
 </table>
 </div>
+<script>
+    $(document).ready(function(){
+        $('.modal').modal();
+        $('.dropdown-trigger').dropdown();
+    });
+</script>
 </body>
 </html>
